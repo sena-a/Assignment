@@ -1,16 +1,19 @@
 <template>
   <div id="app">
     <Nav/>
+    <List/>
   </div>
 </template>
 
 <script>
 import Nav from "./components/Nav";
+import List from "./components/List";
 
 export default {
-  name: "app",
+  name: "App",
   components: {
-    Nav
+    Nav,
+    List
   }
 };
 </script>
