@@ -2,16 +2,19 @@
   <ul>
     <template v-for="(item, index) in list">
       <ListItem v-if="(index + 1) % 4 !== 0" :key="item.no" v-bind="item"></ListItem>
+      <Ads v-if="(index + 1) % 4 === 0" :key="item.title" v-bind="item"></Ads>
     </template>
   </ul>
 </template>
 
 <script>
 import ListItem from "./ListItem";
+import Ads from "./Ads";
 export default {
   name: "List",
   components: {
-    ListItem
+    ListItem,
+    Ads
   },
   data() {
     return {
@@ -57,8 +60,7 @@ export default {
     getList() {
       const newList = [];
       for (let i = this.start; i < this.postList.length; i++) {
-        if ((i + 1) % 4 === 0) {
-          console.log(i);
+        if (i === this.nextAds) {
           newList.push(this.adsList[this.nowAds]);
           ++this.nowAds;
           this.nextAds += 3;
