@@ -44,7 +44,11 @@ export default {
 .card {
   margin: 15px 0;
   &-header {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
   }
   &-body {
@@ -66,6 +70,7 @@ export default {
     width: 100%;
     white-space: nowrap;
     overflow: hidden;
+    -o-text-overflow: ellipsis;
     text-overflow: ellipsis;
   }
 }
