@@ -46,14 +46,16 @@ export default {
   &-img {
     @media (min-width: 480px) {
       display: inline-block;
-      width: 30%;
+      width: 35%;
+      min-width: 140px;
     }
   }
   &-body {
     margin: 14px 10px 5px;
     @media (min-width: 480px) {
       display: inline-block;
-      width: 70%;
+      width: 65%;
+      height: 90%;
       margin: 0 10px;
     }
   }
@@ -64,8 +66,13 @@ export default {
   &-text {
     display: inline-block;
     width: 100%;
-    white-space: nowrap;
+    white-space: normal;
     overflow: hidden;
+    line-height: 1.2em;
+    max-height: 4.8em;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
     -o-text-overflow: ellipsis;
     text-overflow: ellipsis;
     margin: 0;
