@@ -49,25 +49,30 @@
       </div>
     </div>
     <Nav/>
-    <List :cateParams="cateParams"/>
+    <List v-if="mainPage === 'list'" :cateParams="cateParams"/>
+    <Detail v-if="mainPage === 'detail'" :req_no="req"/>
   </div>
 </template>
 
 <script>
 import Nav from "./components/Nav";
 import List from "./components/List";
+import Detail from "./components/Detail";
 
 export default {
   name: "App",
   components: {
     Nav,
-    List
+    List,
+    Detail
   },
   data() {
     return {
       category: [],
       checkedCate: [],
-      cateParams: ""
+      cateParams: "",
+      mainPage: "list",
+      req: 0
     };
   },
   methods: {
@@ -87,6 +92,13 @@ export default {
   },
   created() {
     this.getCategory();
+    this.$EventBus.$on("toDetail", number => {
+      this.mainPage = "detail";
+      this.req = number;
+    });
+    this.$EventBus.$on("toList", () => {
+      this.mainPage = "list";
+    });
   }
 };
 </script>

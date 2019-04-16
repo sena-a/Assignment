@@ -4,7 +4,7 @@
       <span>{{getCategory}}</span>
       <span>{{no}}</span>
     </div>
-    <div class="card-body">
+    <div class="card-body" @click="toDetail">
       <span>{{email}}</span>
       <span>{{updated_at}}</span>
       <h5 class="card-title">{{title}}</h5>
@@ -26,6 +26,11 @@ export default {
         case "3":
           return "coconut";
       }
+    }
+  },
+  methods: {
+    toDetail() {
+      this.$EventBus.$emit("toDetail", this.no);
     }
   }
 };
