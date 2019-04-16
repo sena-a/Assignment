@@ -46,7 +46,7 @@ export default {
   &-img {
     @media (min-width: 480px) {
       display: inline-block;
-      width: 35%;
+      width: 30%;
       min-width: 140px;
     }
   }
@@ -54,7 +54,7 @@ export default {
     margin: 14px 10px 5px;
     @media (min-width: 480px) {
       display: inline-block;
-      width: 65%;
+      width: 70%;
       height: 90%;
       margin: 0 10px;
     }
