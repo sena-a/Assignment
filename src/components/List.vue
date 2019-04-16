@@ -1,11 +1,8 @@
 <template>
   <ul id="list-wrapper">
-    <!-- <template v-for="(item, index) in list">
+    <template v-for="(item, index) in list">
       <ListItem v-if="(index + 1) % 4 !== 0" :key="item.no" v-bind="item"></ListItem>
       <Ads v-if="(index + 1) % 4 === 0" :key="item.title" v-bind="item"></Ads>
-    </template>-->
-    <template v-for="item in postList">
-      <ListItem :key="item.no" v-bind="item"></ListItem>
     </template>
   </ul>
 </template>
@@ -23,9 +20,8 @@ export default {
     return {
       postList: [],
       page: 1,
-      bottom: false,
       adsList: [],
-      nextAds: 3,
+      bottom: false,
       nowAds: 0,
       adsPage: 1,
       start: 0,
@@ -44,10 +40,8 @@ export default {
           limit: 4
         }
       });
-      console.log(list);
-      this.adsList = this.adsList.concat(list);
       ++this.adsPage;
-      this.getList();
+      return list;
     },
     async getPostList() {
       const {
@@ -61,20 +55,27 @@ export default {
       });
       this.postList = this.postList.concat(list);
       ++this.page;
+      return this.postList;
     },
     getList() {
-      const newList = [];
-      for (let i = this.start; i < this.postList.length; i++) {
-        if (i === this.nextAds) {
-          newList.push(this.adsList[this.nowAds]);
-          ++this.nowAds;
-          this.nextAds += 3;
-        }
-        newList.push(this.postList[i]);
-      }
-      this.start = this.postList.length;
-      this.list = this.list.concat(newList);
-      console.log(this.list);
+      this.getPostList()
+        .then(() => {
+          return this.getAds();
+        })
+        .then(resolve => {
+          this.adsList = this.adsList.concat(resolve);
+        })
+        .then(() => {
+          const post = this.postList;
+          for (let i = this.start; i < this.postList.length; i++) {
+            if ((i + 1) % 4 === 0) {
+              post.splice(i, 0, this.adsList[this.nowAds]);
+              ++this.nowAds;
+            }
+          }
+          this.start = this.postList.length;
+          this.list = post;
+        });
     },
     isScrollBottom() {
       const isBottom =
@@ -85,7 +86,6 @@ export default {
     }
   },
   created() {
-    // this.getAds();
     window.addEventListener("scroll", () => {
       this.bottom = this.isScrollBottom();
     });
@@ -96,25 +96,31 @@ export default {
       this.align = "desc";
     });
 
-    this.getPostList();
+    this.getList();
   },
   watch: {
     bottom: function(bottom) {
       if (bottom) {
-        // this.getAds();
-        this.getPostList();
+        this.getList();
       }
     },
     align: function(align) {
-      // this.getAds();
+      this.list = [];
       this.postList = [];
       this.page = 1;
-      this.getPostList();
+      this.nowAds = 0;
+      this.adsPage = 1;
+      this.start = 0;
+      this.getList();
     },
     cateParams: function(cateParams) {
-      this.postList = [];
+      this.list = [];
       this.page = 1;
-      this.getPostList();
+      this.nowAds = 0;
+      this.adsPage = 1;
+      this.postList = [];
+      this.start = 0;
+      this.getList();
     }
   }
 };
