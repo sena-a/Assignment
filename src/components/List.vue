@@ -1,5 +1,5 @@
 <template>
-  <ul>
+  <ul id="list-wrapper">
     <!-- <template v-for="(item, index) in list">
       <ListItem v-if="(index + 1) % 4 !== 0" :key="item.no" v-bind="item"></ListItem>
       <Ads v-if="(index + 1) % 4 === 0" :key="item.title" v-bind="item"></Ads>
@@ -120,5 +120,8 @@ export default {
 };
 </script>
 
-<style>
+<style lang="less" scoped>
+#list-wrapper {
+  padding: 20px;
+}
 </style>

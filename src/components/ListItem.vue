@@ -35,5 +35,15 @@ export default {
   }
 };
 </script>
-<style>
+
+<style lang="less" scoped>
+.card {
+  &-text {
+    display: inline-block;
+    width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
 </style>

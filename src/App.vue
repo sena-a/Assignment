@@ -1,7 +1,12 @@
 <template>
   <div id="app">
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal">Fillter</button>
+    <button
+      type="button"
+      class="btn btn-outline-primary btn-sm modal-open"
+      data-toggle="modal"
+      data-target="#Modal"
+    >Fillter</button>
     <!-- Modal -->
     <div
       class="modal fade"
@@ -103,12 +108,27 @@ export default {
 };
 </script>
 
-<style>
+<style lang="less">
 #app {
+  min-width: 300px;
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.8rem;
+}
+.modal {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.7);
+  &-open {
+    width: 50%;
+  }
 }
 </style>
+
