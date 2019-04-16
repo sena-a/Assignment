@@ -37,7 +37,6 @@ export default {
   },
   computed: {
     alignClass() {
-      console.log(this.selected);
       if (this.selected === "asc") {
         return {
           asc: true
