@@ -78,10 +78,12 @@ export default {
         });
     },
     isScrollBottom() {
+      // const isBottom =
+      //   document.documentElement.scrollHeight -
+      //     document.documentElement.scrollTop ===
+      //   document.documentElement.clientHeight;
       const isBottom =
-        document.documentElement.scrollHeight -
-          document.documentElement.scrollTop ===
-        document.documentElement.clientHeight;
+        window.innerHeight + window.scrollY >= document.body.offsetHeight;
       return isBottom;
     }
   },

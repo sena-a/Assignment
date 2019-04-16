@@ -1,13 +1,17 @@
 <template>
   <div id="app">
     <!-- Button trigger modal -->
-    <button
-      type="button"
-      class="btn btn-outline-primary btn-sm modal-start"
-      data-toggle="modal"
-      data-target="#Modal"
-      v-if="mainPage === 'list'"
-    >Fillter</button>
+    <div class="header">
+      <button
+        type="button"
+        class="btn btn-outline-primary btn-sm modal-start"
+        data-toggle="modal"
+        data-target="#Modal"
+        v-if="mainPage === 'list'"
+      >Fillter</button>
+      <Nav v-if="mainPage === 'list'"/>
+    </div>
+
     <!-- Modal -->
     <div
       class="modal fade"
@@ -54,7 +58,6 @@
         </div>
       </div>
     </div>
-    <Nav v-if="mainPage === 'list'"/>
     <List v-if="mainPage === 'list'" :cateParams="cateParams"/>
     <Detail v-if="mainPage === 'detail'" :req_no="req"/>
   </div>
@@ -112,6 +115,8 @@ export default {
 <style lang="less">
 #app {
   width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -120,6 +125,19 @@ export default {
   font-size: 0.8rem;
   @media (min-width: 480px) {
     font-size: 0.9rem;
+  }
+}
+.header {
+  @media (min-width: 480px) {
+    width: 80%;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
   }
 }
 .modal {
@@ -134,7 +152,7 @@ export default {
     @media (min-width: 480px) {
       width: 70px;
       display: inline-block;
-      margin-left: 10%;
+      margin: 0;
     }
   }
 }

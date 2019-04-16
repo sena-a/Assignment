@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-header">
       <span>{{getCategory}}</span>
-      <span>{{no}}</span>
+      <span>no.{{no}}</span>
     </div>
     <div class="card-body" @click="toDetail">
       <span>{{email}}</span>

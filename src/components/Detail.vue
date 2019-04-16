@@ -62,6 +62,7 @@ export default {
 .detail {
   &-wrapper {
     width: 80%;
+    max-width: 1000px;
     margin: 0 auto 50px;
     font-size: 0.9rem;
     button {

@@ -54,12 +54,11 @@ export default {
 <style lang="less" scoped>
 @blue : rgb(82, 123, 255);
 .navigation {
-  margin: 20px 0 0 10px;
+  margin: 20px 0;
   text-align: center;
   @media (min-width: 480px) {
-    position: absolute;
-    right: 10%;
-    top: 47px;
+    margin: 10px 0;
+    display: inline-block;
   }
 }
 .form-check {
