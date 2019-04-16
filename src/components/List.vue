@@ -1,8 +1,11 @@
 <template>
   <ul>
-    <template v-for="(item, index) in list">
+    <!-- <template v-for="(item, index) in list">
       <ListItem v-if="(index + 1) % 4 !== 0" :key="item.no" v-bind="item"></ListItem>
       <Ads v-if="(index + 1) % 4 === 0" :key="item.title" v-bind="item"></Ads>
+    </template>-->
+    <template v-for="item in postList">
+      <ListItem :key="item.no" v-bind="item"></ListItem>
     </template>
   </ul>
 </template>
@@ -26,36 +29,37 @@ export default {
       nowAds: 0,
       adsPage: 1,
       start: 0,
-      list: []
+      list: [],
+      align: "asc"
     };
   },
   methods: {
     async getAds() {
-      const pageIndex = (this.page - 1) % 3;
-      if (pageIndex === 0) {
-        // 광고 가져오기
-        const {
-          data: { list }
-        } = await this.$http.get("http://comento.cafe24.com/ads.php", {
-          params: {
-            page: this.adsPage
-          }
-        });
-        this.adsList = this.adsList.concat(list);
-        ++this.adsPage;
-      }
+      const {
+        data: { list }
+      } = await this.$http.get("http://comento.cafe24.com/ads.php", {
+        params: {
+          page: this.adsPage,
+          limit: 4
+        }
+      });
+      console.log(list);
+      this.adsList = this.adsList.concat(list);
+      ++this.adsPage;
+      this.getList();
     },
     async getPostList() {
       const {
         data: { list }
       } = await this.$http.get("http://comento.cafe24.com/request.php", {
         params: {
-          page: this.page
+          page: this.page,
+          ord: this.align
         }
       });
       this.postList = this.postList.concat(list);
+      console.log(this.postList);
       ++this.page;
-      this.getList();
     },
     getList() {
       const newList = [];
@@ -80,18 +84,31 @@ export default {
     }
   },
   created() {
+    // this.getAds();
     window.addEventListener("scroll", () => {
       this.bottom = this.isScrollBottom();
     });
-    this.getAds();
+    this.$EventBus.$on("setAsc", () => {
+      this.align = "asc";
+    });
+    this.$EventBus.$on("setDesc", () => {
+      this.align = "desc";
+    });
+
     this.getPostList();
   },
   watch: {
     bottom: function(bottom) {
       if (bottom) {
-        this.getAds();
+        // this.getAds();
         this.getPostList();
       }
+    },
+    align: function(align) {
+      // this.getAds();
+      this.postList = [];
+      this.page = 1;
+      this.getPostList();
     }
   }
 };

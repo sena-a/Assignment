@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Nav/>
+    <Nav v-on:asc="changeAlign()"/>
     <List/>
   </div>
 </template>
