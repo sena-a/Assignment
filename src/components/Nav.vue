@@ -32,7 +32,7 @@ export default {
   name: "Nav",
   data() {
     return {
-      selected: ""
+      selected: "asc"
     };
   },
   computed: {
@@ -55,7 +55,13 @@ export default {
 <style lang="less" scoped>
 @blue : rgb(82, 123, 255);
 .navigation {
-  margin: 20px 0 0 7px;
+  margin: 20px 0 0 10px;
+  text-align: center;
+  @media (min-width: 550px) {
+    position: absolute;
+    right: 10%;
+    top: 47px;
+  }
 }
 .form-check-input {
   display: none;

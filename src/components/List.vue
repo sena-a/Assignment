@@ -125,5 +125,6 @@ export default {
   padding: 0;
   width: 80%;
   min-width: 270px;
+  margin: 0 auto;
 }
 </style>

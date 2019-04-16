@@ -5,12 +5,15 @@
       class="btn btn-outline-primary btn-sm"
       @click="$EventBus.$emit('toList')"
     >목록으로</button>
-    <h3>{{title}}</h3>
-    <p>{{email}}</p>
-    <p>{{date}}</p>
-    <div>{{content}}</div>
-    <div class="list-group">
-      <div class="list-group-item" v-for="item in reply" :key="item.no">
+    <div class="detail-main">
+      <h3>{{title}}</h3>
+      <p>{{email}}</p>
+      <p>{{date}}</p>
+      <div class="detail-content">{{content}}</div>
+    </div>
+    <div class="list-group detail-comment">
+      <h4>Comments</h4>
+      <div class="list-group-item detail-comment-each" v-for="item in reply" :key="item.no">
         <div class="d-flex w-100 justify-content-between">
           <small class="text-muted">{{item.email}}</small>
         </div>
@@ -45,7 +48,7 @@ export default {
       const { article, replies } = detail;
       this.title = article.title;
       this.email = article.email;
-      this.date = article.update_at;
+      this.date = article.updated_at;
       this.content = article.contents;
       this.reply = replies;
     }
@@ -55,5 +58,41 @@ export default {
   }
 };
 </script>
-<style>
+<style lang="less" scoped>
+.detail {
+  &-wrapper {
+    width: 80%;
+    margin: 0 auto 50px;
+    font-size: 0.9rem;
+    button {
+      margin-bottom: 50px;
+    }
+  }
+  &-main {
+    width: 95%;
+    margin: 0 auto;
+    h3 {
+      margin-bottom: 15px;
+    }
+    p {
+      margin: 5px 0;
+    }
+  }
+  &-content {
+    margin: 20px 0 40px;
+  }
+  &-comment {
+    font-size: 0.8rem;
+    h4 {
+      font-size: 1rem;
+    }
+    p {
+      margin-top: 10px;
+    }
+    &-each {
+      margin-bottom: 12px;
+    }
+  }
+}
 </style>
+

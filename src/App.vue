@@ -3,9 +3,10 @@
     <!-- Button trigger modal -->
     <button
       type="button"
-      class="btn btn-outline-primary btn-sm modal-open"
+      class="btn btn-outline-primary btn-sm modal-start"
       data-toggle="modal"
       data-target="#Modal"
+      v-if="mainPage === 'list'"
     >Fillter</button>
     <!-- Modal -->
     <div
@@ -53,7 +54,7 @@
         </div>
       </div>
     </div>
-    <Nav/>
+    <Nav v-if="mainPage === 'list'"/>
     <List v-if="mainPage === 'list'" :cateParams="cateParams"/>
     <Detail v-if="mainPage === 'detail'" :req_no="req"/>
   </div>
@@ -110,24 +111,37 @@ export default {
 
 <style lang="less">
 #app {
-  min-width: 300px;
+  width: 100%;
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   margin-top: 60px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   font-size: 0.8rem;
+  @media (min-width: 550px) {
+    font-size: 0.9rem;
+  }
 }
 .modal {
   width: 100%;
   height: 100%;
   position: fixed;
   background: rgba(0, 0, 0, 0.7);
+  &-start {
+    width: 40%;
+    margin: 0 auto;
+    display: block;
+    @media (min-width: 550px) {
+      width: 70px;
+      display: inline-block;
+      margin-left: 10%;
+    }
+  }
   &-open {
-    width: 50%;
+    padding: 0;
+    #Modal {
+      padding: 0;
+    }
   }
 }
 </style>
