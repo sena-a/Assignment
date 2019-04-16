@@ -1,6 +1,5 @@
 <template>
   <nav class="navigation">
-    <button type="button" class="btn btn-outline-primary btn-sm">Fillter</button>
     <div>
       <div class="form-check form-check-inline">
         <input
@@ -37,11 +36,6 @@ export default {
     return {
       selected: ""
     };
-  },
-  methods: {
-    alignAsc() {
-      this.$emit("asc");
-    }
   }
 };
 </script>

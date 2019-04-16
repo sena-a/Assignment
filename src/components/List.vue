@@ -33,6 +33,7 @@ export default {
       align: "asc"
     };
   },
+  props: ["cateParams"],
   methods: {
     async getAds() {
       const {
@@ -54,11 +55,11 @@ export default {
       } = await this.$http.get("http://comento.cafe24.com/request.php", {
         params: {
           page: this.page,
-          ord: this.align
+          ord: this.align,
+          category: this.cateParams === "" ? "1,2,3" : this.cateParams
         }
       });
       this.postList = this.postList.concat(list);
-      console.log(this.postList);
       ++this.page;
     },
     getList() {
@@ -106,6 +107,11 @@ export default {
     },
     align: function(align) {
       // this.getAds();
+      this.postList = [];
+      this.page = 1;
+      this.getPostList();
+    },
+    cateParams: function(cateParams) {
       this.postList = [];
       this.page = 1;
       this.getPostList();
