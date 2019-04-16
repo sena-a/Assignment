@@ -6,7 +6,7 @@
     </div>
     <div class="card-body" @click="toDetail">
       <span>{{email}}</span>
-      <span>{{updated_at}}</span>
+      <span>{{getDate}}</span>
       <h5 class="card-title">{{title}}</h5>
       <p class="card-text">{{contents}}</p>
     </div>
@@ -26,6 +26,10 @@ export default {
         case "3":
           return "coconut";
       }
+    },
+    getDate() {
+      const date = this.updated_at.slice(0, 11);
+      return date;
     }
   },
   methods: {
@@ -38,9 +42,28 @@ export default {
 
 <style lang="less" scoped>
 .card {
+  margin: 15px 0;
+  &-header {
+    display: flex;
+    justify-content: space-between;
+  }
+  &-body {
+    span:nth-child(1) {
+      &::after {
+        display: inline-block;
+        content: "";
+        height: 10px;
+        border-left: 1px solid black;
+        margin: 0 12px;
+      }
+    }
+  }
+  &-title {
+    margin: 12px 0 7px;
+  }
   &-text {
     display: inline-block;
-    width: 250px;
+    width: 100%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

@@ -122,6 +122,8 @@ export default {
 
 <style lang="less" scoped>
 #list-wrapper {
-  padding: 20px;
+  padding: 0;
+  width: 80%;
+  min-width: 270px;
 }
 </style>
