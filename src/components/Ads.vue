@@ -1,15 +1,18 @@
 <template>
   <div class="ads-wrapper">
-    <div class="ads-img">
-      <img
-        :src="'http://comento.cafe24.com/public/images/'+img"
-        class="card-img"
-        :alt="title+'광고 이미지'"
-      >
-    </div>
-    <div class="ads-body">
-      <h5 class="ads-title">{{title}}</h5>
-      <p class="ads-text">{{contents}}</p>
+    <p class="ads-sponsor">sponsored</p>
+    <div class="ads-container">
+      <div class="ads-img">
+        <img
+          :src="'http://comento.cafe24.com/public/images/'+img"
+          class="card-img"
+          :alt="title+'광고 이미지'"
+        >
+      </div>
+      <div class="ads-body">
+        <h5 class="ads-title">{{title}}</h5>
+        <p class="ads-text">{{contents}}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -24,6 +27,13 @@ export default {
   &-wrapper {
     border: 1px solid rgb(226, 226, 226);
     border-radius: 4px;
+    padding: 0 15px 10px;
+  }
+  &-sponsor {
+    margin: 10px 3px 7px;
+    font-size: 0.7rem;
+  }
+  &-container {
     @media (min-width: 480px) {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -49,6 +59,7 @@ export default {
   }
   &-title {
     font-size: 1rem;
+    margin-top: 10px;
   }
   &-text {
     display: inline-block;
