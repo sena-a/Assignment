@@ -57,14 +57,20 @@ export default {
 .navigation {
   margin: 20px 0 0 10px;
   text-align: center;
-  @media (min-width: 550px) {
+  @media (min-width: 480px) {
     position: absolute;
     right: 10%;
     top: 47px;
   }
 }
-.form-check-input {
-  display: none;
+.form-check {
+  &-input {
+    display: none;
+  }
+  &-inline {
+    margin-right: 0;
+    margin-left: 10px;
+  }
 }
 .asc {
   & &-radio {

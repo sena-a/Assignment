@@ -118,7 +118,7 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
   font-size: 0.8rem;
-  @media (min-width: 550px) {
+  @media (min-width: 480px) {
     font-size: 0.9rem;
   }
 }
@@ -131,16 +131,10 @@ export default {
     width: 40%;
     margin: 0 auto;
     display: block;
-    @media (min-width: 550px) {
+    @media (min-width: 480px) {
       width: 70px;
       display: inline-block;
       margin-left: 10%;
-    }
-  }
-  &-open {
-    padding: 0;
-    #Modal {
-      padding: 0;
     }
   }
 }
