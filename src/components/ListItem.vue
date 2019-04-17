@@ -28,6 +28,7 @@ export default {
       }
     },
     getDate() {
+      // 시작 제외한 YYMMDD만 출력
       const date = this.updated_at.slice(0, 11);
       return date;
     }
