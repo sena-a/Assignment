@@ -1,4 +1,4 @@
-# comento 과제 전형
+# 과제 전형
 
 ## Project localhost 구동
 
