@@ -1,4 +1,4 @@
-# 과제 전형
+# 게시판
 
 ## Project localhost 구동
 
