@@ -1,4 +1,4 @@
-# 게시판
+# Vue를 활용한 게시판 프로젝트
 
 ## Project localhost 구동
 
