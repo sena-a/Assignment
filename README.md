@@ -25,7 +25,7 @@ npm run serve
 
 ## 문제 해결
 
-netlify로 배포하여 https 프로토콜을 사용중이나 rest api 주소가 http 프로토콜로 이루어져 있어 헤더에 관련 메타 태그 추가.
+netlify로 배포하여 https 프로토콜을 사용중이나 서버 api 주소가 http 프로토콜로 이루어져 있어 헤더에 관련 메타 태그 추가.
 
 ```
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
